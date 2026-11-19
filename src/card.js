@@ -1,7 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { blue } from "@mui/material/colors";
 import Typecard from "./Typecard";
-import Typecard2 from "./Typecard2";
 import pokemon from "./pokemon-vector-logo-seeklogo/pokemon-seeklogo.png";
 export default function Card(props) {
   let typeList = ["Planta", "Poison", "Anfíbio", "fogo"];
@@ -56,8 +54,8 @@ export default function Card(props) {
               border: "4px solid white",
               borderRadius: "50%",
               // IMAGEM NAO APARECE
-              backgroundImage: "url{(props.sprites)}",
-               
+              backgroundImage: `url(${props.img})`,
+
 
               backgroundSize: "cover",
             }}
@@ -118,7 +116,7 @@ export default function Card(props) {
                   justifyContent: "space-evenly",
                   alignItems: "center",
                   color: "white",
-                  marginTop:"20px"
+                  marginTop: "20px"
                 }}
               >
                 <Typography
@@ -212,7 +210,7 @@ export default function Card(props) {
               justifyContent: "space-evenly",
               flexWrap: "wrap",
               alignItems: "center",
-              
+
             }}
           >
             {typeList.map((item) => {

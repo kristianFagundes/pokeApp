@@ -1,18 +1,21 @@
 import React from 'react';
+// biblioteca que utilizamos para construir interfaces.
 import ReactDOM from 'react-dom/client';
+// responsável por conectar nossa aplicação React ao HTML do navegador.
 import './index.css';
 import PokeTela from './PokeTela';
-import reportWebVitals from './reportWebVitals';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// document.getElementById('root'): procura no HTML o elemento que possui o identificador root.
+// ReactDOM.createRoot(): prepara esse elemento para receber a aplicação React.
 root.render(
+// O método render() coloca nossa aplicação na página. O root é a constante acima
+
   <React.StrictMode>
     <PokeTela />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

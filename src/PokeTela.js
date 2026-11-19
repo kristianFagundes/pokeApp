@@ -19,7 +19,7 @@ export default function PokeTela() {
       "weight":body.weight,
       "sprites":body.sprites.front_default,
       "status":body.stats,
-      "Types":body.Types
+      "Types":body.types
 
     
     
