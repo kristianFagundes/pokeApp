@@ -1,14 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Typecard from "./Typecard";
 import pokemon from "./pokemon-vector-logo-seeklogo/pokemon-seeklogo.png";
 export default function Card(props) {
-  let typeList = ["Planta", "Poison", "Anfíbio", "fogo"];
+  //O parâmetro props recebe todas as propriedades que o componente pai envia para o componente Card.
+  //No nosso projeto, o componente pai é o PokeTela.js.
+  console.log(props.types);
   return (
     // card
     <Box
       sx={{
-        height: " 65vh",
-        width: "65vw",
+        height: "55vh",
+        width: "90%",
+        maxWidth: "750px",
         margin: "auto auto 32px",
         background: "linear-gradient( to bottom, #5728adff, #a17fddff)",
       }}
@@ -25,41 +28,41 @@ export default function Card(props) {
         {/* div-foto */}
         <Box
           sx={{
-            width: "30%",
+            width: "100rem",
             height: "80%",
             display: "flex",
             flexDirection: "column",
+
           }}
         >
           {/* logo */}
           <Box>
             <img
               style={{
-                width: "100%",
-                height: "100%",
+                width: "15rem",
                 marginLeft: "20px",
                 marginRight: "auto",
+                overflow: "hidden"
               }}
               src={pokemon}
+              alt="Logo Pokémon"
+            />
+            <img
+              style={{
+                marginLeft: "20px",
+                marginRight: "auto",
+                height: "100%",
+                backgroundColor: "#6f48b8ff",
+                border: "4px solid white",
+                borderRadius: "50%",
+
+              }}
+              src={props.img}
+              alt="Logo Pokémon"
             />
           </Box>
           {/* foto */}
-          <Box
-            sx={{
-              marginLeft: "20px",
-              marginRight: "auto",
-              width: "100%",
-              height: "100%",
-              backgroundColor: "#6f48b8ff",
-              border: "4px solid white",
-              borderRadius: "50%",
-              // IMAGEM NAO APARECE
-              backgroundImage: `url(${props.img})`,
 
-
-              backgroundSize: "cover",
-            }}
-          ></Box>
         </Box>
 
         {/* div-infos */}
@@ -213,40 +216,47 @@ export default function Card(props) {
 
             }}
           >
-            {typeList.map((item) => {
-              return <Typecard text={item} />;
-            })}
+            {props.types?.map((item) => (
+              <Typecard
+                key={item.slot}
+                //A propriedade key serve para o React identificar individualmente cada elemento de uma lista.
+                type={item.type}
+              />
+            ))}
           </Box>
 
           {/* descrição */}
           <Box
             sx={{
               backgroundColor: "#5b379eff",
-              overflow: "auto",
+              // overflow: "auto",
               padding: "16px",
               margin: "0",
               width: "fit-content",
             }}
           >
-            <Typography
-              sx={{
-                fontSize: "1rem",
-                textShadow: "2px 2px 5px rgb(0, 0, 0)",
-                alignItems: "center",
-                textAlign: "justify",
-                color: "white",
-              }}
-            >
-              É um Pokémon inicial de Planta/Veneno, de coloração verde-água,
-              com um bulbo de flor em suas costas que cresce com o tempo,
-              fornecendo-lhe energia da luz solar e nutrientes. Ele se assemelha
-              a um dinossauro ou sapo jovem e tem olhos vermelhos brilhantes. A
-              relação simbiótica entre o Pokémon e o bulbo é fundamental para o
-              seu crescimento e desenvolvimento.
-            </Typography>
+            {props.abilities?.map((item) => (
+              <Typography
+                key={item.slot}
+                sx={{
+                  fontSize: "1rem",
+                  textShadow: "2px 2px 5px rgb(0, 0, 0)",
+                  alignItems: "center",
+                  textAlign: "justify",
+                  color: "white",
+                }}
+              >
+                {item.ability.name}
+              </Typography>
+            ))}
+
+
           </Box>
         </Box>
       </Box>
+      <Button onClick={props.capturar}>
+        Capturar para Equipe
+      </Button>
     </Box>
   );
 }
