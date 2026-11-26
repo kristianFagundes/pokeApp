@@ -26,7 +26,7 @@ export default function DrawerEquipe(props) {
                     minHeight: "7rem",
                     padding: "1rem",
                     boxSizing: "border-box",
-                    backgroundColor: "#F4F7FB",
+                    backgroundColor: "#0A1D37",
                     display: "flex",
                     gap: "1em",
                     justifyContent: "space-evenly",
@@ -99,7 +99,7 @@ export default function DrawerEquipe(props) {
             </Box>
             <Box sx={{
                 width: "100%",
-                Height: "5rem",
+                height: "5rem",
                 padding: "1.5rem",
                 boxSizing: "border-box",
                 backgroundColor: "#F4F7FB",
